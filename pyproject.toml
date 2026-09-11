@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fa_assist"
+name = "fastapi_assist"
 version = "0.1.0"
 
 description = "Production-ready FastAPI project scaffolding with async ORM, migrations, Docker, logging, and modular app architecture."
