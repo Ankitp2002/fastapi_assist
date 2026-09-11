@@ -559,9 +559,9 @@ async def bulk_update_instances(
     fields: List,
     logger: logging.Logger
 ) -> None:
-    "
+    '''
     update_data: List of dicts, each must include 'id' or specified id_field
-    "
+    '''
     try:
         logger.info(
             f"Starting bulk update for {model.__name__} with {len(update_records)} records"
@@ -616,7 +616,7 @@ HTTPS_RESPONSE_PY = """
 from typing import Any, Union
 
 from fastapi import HTTPException, status
-from apis.schemas import APIResponse
+from apps.schemas import APIResponse
 
 
 def success_response(data:Union[Any, list] = None, message:str = "Success", status_code: int = status.HTTP_200_OK):
@@ -640,7 +640,7 @@ MODELS_PY = """
 """
 
 
-REG_MODULES_PY = """
+REG_MODELS_PY = """
 import os
 base_path = os.path.join(os.getcwd(), "apps")
 __models__: list[str] = [f"apps.{i}.models" for i in os.listdir(base_path) if os.path.isdir(f"{base_path}/{i}") and "models.py" in os.listdir(f"{base_path}/{i}")] + ["aerich.models"]
@@ -836,3 +836,10 @@ RUN mkdir -p logs/gunicorn/
 # USER appuser
 """
 
+DOT_ENV_FILE = """
+
+DB_NAME=db_name
+DB_USER=root
+DB_PASSWORD=root
+
+"""

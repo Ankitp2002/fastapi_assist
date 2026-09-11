@@ -11,7 +11,35 @@ requires-python = ">=3.10"
 license = {text = "MIT"}
 
 dependencies = [
-    "typer>=0.12",
+    "typer",
+    "aiofiles",
+    "aiomysql",
+    "click",
+    "cryptography",
+    "cython",
+    "defusedxml",
+    "dotenv",
+    "fastapi",
+    "google-auth",
+    "google-cloud",
+    "google-cloud-bigquery[pandas]",
+    "jinja2",
+    "openpyxl",
+    "orjson",
+    "pandas",
+    "numpy",
+    "pydantic[email]",
+    "pydantic-settings",
+    "pyjwt",
+    "python-dotenv",
+    "python-multipart",
+    "setuptools",
+    "tortoise",
+    "tortoise-orm[aiomysql]",
+    "uvicorn",
+    "uvicorn-worker",
+    "xlsxwriter",
+    "aerich[toml]",
 ]
 [project.scripts]
 fa_assist = "fa_assist.cli:main"
