@@ -50,6 +50,7 @@ dev = [
     "pytest-asyncio",
     "httpx",
     "ruff",
+    "typer"
 ]
 
 [tool.setuptools.packages.find]
