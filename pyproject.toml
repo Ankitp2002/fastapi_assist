@@ -5,24 +5,55 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fa_assist"
 version = "0.1.0"
-description = "Developer utilities and productivity tools for FastAPI"
+
+description = "Production-ready FastAPI project scaffolding with async ORM, migrations, Docker, logging, and modular app architecture."
+
 readme = "README.md"
+
 requires-python = ">=3.10"
 license = {text = "MIT"}
+
+authors = [
+    { name = "Ankit Prajapati" }
+]
+
+keywords = [
+    "fastapi",
+    "python",
+    "cli",
+    "scaffolding",
+    "fastapi-cli",
+    "tortoise-orm",
+    "aerich",
+    "docker",
+    "backend",
+    "api"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Framework :: FastAPI",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
 
 dependencies = [
     "typer",
     "aiofiles",
     "aiomysql",
     "click",
-    "cryptography",
     "cython",
-    "defusedxml",
     "dotenv",
     "fastapi",
-    "google-auth",
-    "google-cloud",
-    "google-cloud-bigquery[pandas]",
     "jinja2",
     "openpyxl",
     "orjson",
@@ -30,7 +61,6 @@ dependencies = [
     "numpy",
     "pydantic[email]",
     "pydantic-settings",
-    "pyjwt",
     "python-dotenv",
     "python-multipart",
     "setuptools",
@@ -52,6 +82,11 @@ dev = [
     "ruff",
     "typer"
 ]
+
+[project.urls]
+Homepage = "https://github.com/Ankitp2002/fastapi_assist"
+Repository = "https://github.com/Ankitp2002/fastapi_assist"
+Issues = "https://github.com/Ankitp2002/fastapi_assist/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
