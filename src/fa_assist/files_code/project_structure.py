@@ -266,7 +266,7 @@ def generate_router(_app_name, tags: list[str] = []) -> APIRouter:
 """
 
 CUSTOM_ERROR_PY = """
-class InvalidSKUArgumentError(Exception):...
+class InvalidError(Exception):...
 
 """
 
