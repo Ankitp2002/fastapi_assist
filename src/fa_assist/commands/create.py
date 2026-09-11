@@ -1,14 +1,8 @@
 from pathlib import Path
-from ..files_code.app_structure import (
-    CONSTANT_PY,
-    URLS_PY,
-    MODELS_PY,
-    UTILS_PY,
-    INIT_PY,
-)
+from ..files_code.app_structure import *
 
 
-def create_app(project_name: str):
+def create_app(project_name, app_name: str):
     """
     Creates a new FastAPI app with the given name.
     """
@@ -18,8 +12,8 @@ def create_app(project_name: str):
     # ---------------------------------------------------------
     project_path = Path.cwd()
 
-    apps_path = project_path / "apps"
-
+    apps_path = project_path/ project_name / "apps"
+    print(apps_path)
     if not apps_path.exists():
         raise FileNotFoundError(
             "apps directory not found. "
@@ -30,10 +24,10 @@ def create_app(project_name: str):
     # ---------------------------------------------------------
     # 2. Create app directory
     # ---------------------------------------------------------
-    app_path = apps_path / project_name
+    app_path = apps_path / app_name
 
     if app_path.exists():
-        raise FileExistsError(f"App '{project_name}' already exists.")
+        raise FileExistsError(f"App '{app_name}' already exists.")
 
     app_path.mkdir(parents=True)
 
@@ -42,8 +36,7 @@ def create_app(project_name: str):
     # ---------------------------------------------------------
     directories = [
         app_path / "views",
-        app_path / "enums",
-        app_path / "dependencies",
+        app_path / "schemas",
     ]
 
     for directory in directories:
@@ -57,13 +50,15 @@ def create_app(project_name: str):
     # ---------------------------------------------------------
     files = {
         "__init__.py": INIT_PY,
-        "models.py": MODELS_PY,
-        "urls.py": URLS_PY,
-        "constant.py": CONSTANT_PY,
+        "views/__init__.py": VIEW_INIT_PY,
+        f"views/api_{app_name}_view.py": VIEW_PY.format(app=app_name),
+        "schemas/__init__.py": "",
         "utils.py": UTILS_PY,
-        "views/__init__.py": "",
-        "enums/__init__.py": "",
-        "dependencies/__init__.py": "",
+        "models.py": MODELS_PY,
+        "constants.py": CONSTANT_PY,
+        "enums.py": "",
+        "dependencies.py": "",
+        "internal_api_calls.py": "",
     }
 
     # ---------------------------------------------------------
@@ -79,6 +74,6 @@ def create_app(project_name: str):
         )
 
     print()
-    print(f"✓ FastAPI app '{project_name}' " f"created successfully.")
+    print(f"✓ FastAPI app '{app_name}' " f"created successfully.")
     print(f"  Location: {app_path}")
     print()

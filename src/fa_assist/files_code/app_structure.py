@@ -1,8 +1,4 @@
-UTILS_PY = """\
-\"\"\"
-Utility functions for this application.
-\"\"\"
-
+UTILS_PY = """
 
 def success_response(
     data=None,
@@ -23,44 +19,56 @@ def error_response(
         "message": message,
         "data": None,
     }
+    
+    
 """
-CONSTANT_PY = """\
-\"\"\"
-Application-level constants.
-\"\"\"
+CONSTANT_PY = """
 
-DEFAULT_PAGE_SIZE = 20
-MAX_PAGE_SIZE = 100
 """
-URLS_PY = """\
+
+MODELS_PY = """
+
+"""
+
+INIT_PY = """
+    
+"""
+
+VIEW_INIT_PY = """
+
+import pkgutil, importlib
+from . import *
 from fastapi import APIRouter
 
+_file_routers = tuple()
 
-router = APIRouter()
+for file in pkgutil.iter_modules(__path__):
+    _file = importlib.import_module(f"{__name__}.{file.name}")
+    if hasattr(_file, "routers"):
+        _file_routers += (_file.routers, )
 
+__routers: tuple[APIRouter, ...] = _file_routers
 
-@router.get("/")
-def index():
-    return {
-        "message": "Application is working"
-    }
 """
-MODELS_PY = """\
-\"\"\"
-Database models for this application.
-\"\"\"
 
-# Example:
-#
-# from sqlalchemy import Column, Integer, String
-# from db import Base
-#
-#
-# class Example(Base):
-#     __tablename__ = "examples"
-#
-#     id = Column(Integer, primary_key=True)
-#     name = Column(String, nullable=False)
-"""
-INIT_PY = """\
+VIEW_PY = """
+
+from pathlib import Path
+import traceback
+
+import pandas as pd
+from tortoise.expressions import Q
+
+from apis import generate_router as APIRoute, get_logger
+from apis.db_operations import read_instances
+from apis.http_response import error_response, success_response
+from fastapi import Body, Depends
+
+routers = APIRoute('/{app}', tags=["{app} View Section"])
+logger = get_logger("{app}")
+
+@routers.get("")
+async def api_view(_: Users = Depends(get_current_super_admin)):
+    return success_response(data = "", message = "success")
+    
 """
