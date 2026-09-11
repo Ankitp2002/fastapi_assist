@@ -61,15 +61,13 @@ dependencies = [
     "numpy",
     "pydantic[email]",
     "pydantic-settings",
-    "python-dotenv",
     "python-multipart",
     "setuptools",
-    "tortoise",
-    "tortoise-orm[aiomysql]",
+    "tortoise-orm[aiomysql]>=1.1,<2",
     "uvicorn",
     "uvicorn-worker",
     "xlsxwriter",
-    "aerich[toml]",
+    "aerich[toml]>=0.10,<1",
 ]
 [project.scripts]
 fa_assist = "fa_assist.cli:main"
