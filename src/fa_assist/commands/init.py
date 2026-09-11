@@ -35,6 +35,7 @@ def init_project(project_name: str, path: str):
 
     files = {
         "main.py": MAIN_PY,
+        ".env": DOT_ENV_FILE,
 
         "configuration/config.py": CONFIG_PY.format(project_name=project_name),
         "configuration/custom_error.py": CUSTOM_ERROR_PY,
@@ -48,7 +49,7 @@ def init_project(project_name: str, path: str):
         "apps/db_operations.py": DB_OPERATIONS_PY,
         "apps/https_response.py": HTTPS_RESPONSE_PY,
         "apps/models.py": MODELS_PY,
-        "apps/reg_modules.py": REG_MODULES_PY,
+        "apps/reg_models.py": REG_MODELS_PY,
         "apps/reg_routers.py": REG_ROUTERS_PY,
         "apps/schemas.py": SCHEMAS_PY,
         "apps/utils.py": UTILS_PY,
