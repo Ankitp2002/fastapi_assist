@@ -59,16 +59,16 @@ import traceback
 import pandas as pd
 from tortoise.expressions import Q
 
-from apis import generate_router as APIRoute, get_logger
-from apis.db_operations import read_instances
-from apis.http_response import error_response, success_response
+from apps import generate_router as APIRoute, get_logger
+from apps.db_operations import read_instances
+from apps.https_response import error_response, success_response
 from fastapi import Body, Depends
 
 routers = APIRoute('/{app}', tags=["{app} View Section"])
 logger = get_logger("{app}")
 
 @routers.get("")
-async def api_view(_: Users = Depends(get_current_super_admin)):
+async def api_view():
     return success_response(data = "", message = "success")
     
 """
