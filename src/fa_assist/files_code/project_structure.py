@@ -254,7 +254,6 @@ APPS_INIT_PY = """
 
 import logging
 from fastapi import APIRouter
-from configuration.logger import create_get_logger
 
 def generate_router(_app_name, tags: list[str] = []) -> APIRouter:
     
@@ -264,11 +263,6 @@ def generate_router(_app_name, tags: list[str] = []) -> APIRouter:
     _router = APIRouter(prefix=_app_name, tags=tags)
     
     return _router
-    
-
-def get_logger(_app_name) -> logging.Logger:
-    return create_get_logger(_app_name)
-    
 """
 
 CUSTOM_ERROR_PY = """

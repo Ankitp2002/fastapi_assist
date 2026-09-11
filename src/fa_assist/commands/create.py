@@ -12,8 +12,7 @@ def create_app(project_name, app_name: str):
     # ---------------------------------------------------------
     project_path = Path.cwd()
 
-    apps_path = project_path/ project_name / "apps"
-    print(apps_path)
+    apps_path = project_path / project_name / "apps"
     if not apps_path.exists():
         raise FileNotFoundError(
             "apps directory not found. "
@@ -49,7 +48,7 @@ def create_app(project_name, app_name: str):
     # 4. Create files
     # ---------------------------------------------------------
     files = {
-        "__init__.py": INIT_PY,
+        "__init__.py": INIT_PY.format(app=app_name),
         "views/__init__.py": VIEW_INIT_PY,
         f"views/api_{app_name}_view.py": VIEW_PY.format(app=app_name),
         "schemas/__init__.py": "",

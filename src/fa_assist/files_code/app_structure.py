@@ -31,7 +31,11 @@ MODELS_PY = """
 """
 
 INIT_PY = """
+
+from configuration.logger import create_get_logger
     
+get_logger = create_get_logger("{app}")
+
 """
 
 VIEW_INIT_PY = """
@@ -59,16 +63,18 @@ import traceback
 import pandas as pd
 from tortoise.expressions import Q
 
-from apps import generate_router as APIRoute, get_logger
+from apps import generate_router as APIRoute
 from apps.db_operations import read_instances
 from apps.https_response import error_response, success_response
 from fastapi import Body, Depends
+from ...{app} import get_logger
 
 routers = APIRoute('/{app}', tags=["{app} View Section"])
-logger = get_logger("{app}")
+logger = get_logger("{app}_view")
 
 @routers.get("")
 async def api_view():
+    logger.info("API view called")
     return success_response(data = "", message = "success")
     
 """
