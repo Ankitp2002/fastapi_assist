@@ -31,6 +31,8 @@ jobs:
         with:
           name: distributions
           path: dist/
+  permissions:
+    id-token: write
 
   publish:
     name: Publish to PyPI
