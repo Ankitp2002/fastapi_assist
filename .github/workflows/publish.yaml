@@ -37,6 +37,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+
     environment:
       name: pypi
       url: https://pypi.org/p/fastapi_assist
