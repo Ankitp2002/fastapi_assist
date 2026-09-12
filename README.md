@@ -43,7 +43,7 @@ With a few CLI commands, you get a complete project structure that is ready for 
 ## 1. Install FastAssist
 
 ```bash
-pip install fa-assist
+pip install fastapi-assist
 ```
 
 ## 2. Initialize your project
