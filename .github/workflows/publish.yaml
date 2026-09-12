@@ -31,13 +31,14 @@ jobs:
         with:
           name: distributions
           path: dist/
-  permissions:
-    id-token: write
 
   publish:
     name: Publish to PyPI
     needs: build
     runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
 
     environment:
       name: pypi
