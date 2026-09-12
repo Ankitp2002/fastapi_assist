@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fastapi_assist"
-version = "0.1.0"
+version = "0.1.1"
 
 description = "Production-ready FastAPI project scaffolding with async ORM, migrations, Docker, logging, and modular app architecture."
 
