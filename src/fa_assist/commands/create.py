@@ -2,7 +2,7 @@ from pathlib import Path
 from ..files_code.app_structure import *
 
 
-def create_app(project_name, app_name: str):
+def create_app(app_name: str):
     """
     Creates a new FastAPI app with the given name.
     """
@@ -12,7 +12,9 @@ def create_app(project_name, app_name: str):
     # ---------------------------------------------------------
     project_path = Path.cwd()
 
-    apps_path = project_path / project_name / "apps"
+    # apps_path = project_path / project_name / "apps"
+    apps_path = project_path / "apps"
+
     if not apps_path.exists():
         raise FileNotFoundError(
             "apps directory not found. "

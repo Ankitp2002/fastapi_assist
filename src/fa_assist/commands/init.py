@@ -1,6 +1,7 @@
 from pathlib import Path
 from ..files_code.project_structure import *
 
+
 def init_project(project_name: str, path: str):
     """
     Initialize a new FastAPI project with the standard
@@ -12,7 +13,15 @@ def init_project(project_name: str, path: str):
     # ---------------------------------------------------------
     project_path = Path(path).resolve() / project_name
 
-    if project_path.exists():
+    if project_path.exists() and project_name == ".":
+        if (
+            input(
+                "Do you want to create the project in the current directory? (y/n): "
+            ).lower()
+            != "y"
+        ):
+            return
+    elif project_path.exists():
         raise FileExistsError(
             f"Project '{project_name}' already exists at: {project_path}"
         )
@@ -36,14 +45,12 @@ def init_project(project_name: str, path: str):
     files = {
         "main.py": MAIN_PY,
         ".env": DOT_ENV_FILE,
-
         "configuration/config.py": CONFIG_PY.format(project_name=project_name),
         "configuration/custom_error.py": CUSTOM_ERROR_PY,
         "configuration/db.py": DB_PY,
         "configuration/logger.py": LOGGER_PY,
         "configuration/rate_limit.py": RATE_LIMIT_PY,
         "configuration/server.py": SERVER_PY.format(project_name=project_name),
-
         "apps/__init__.py": APPS_INIT_PY,
         "apps/constants.py": CONSTANT_PY,
         "apps/db_operations.py": DB_OPERATIONS_PY,
@@ -53,11 +60,9 @@ def init_project(project_name: str, path: str):
         "apps/reg_routers.py": REG_ROUTERS_PY,
         "apps/schemas.py": SCHEMAS_PY,
         "apps/utils.py": UTILS_PY,
-
         "Dockerfile": DOCKER,
         ".docker-compose.yaml": DOCKER_COMPOSE.format(project_name=project_name),
         "docker_setup.sh": DOCKER_SETUP_SH,
-
         "deployment.sh": DEPLOYMENT_SH.format(project_name=project_name),
     }
 
